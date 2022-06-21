@@ -7,7 +7,6 @@
                 @foreach ($provincias as $provincia)
                     <option value="{{ $provincia->id }}">{{ $provincia->nombre }}</option>
                 @endforeach
-
             </select>
         </label>
     @endisset
@@ -16,30 +15,61 @@
         <input type="text" wire:model="peso" name="peso" id="peso" placeholder="Indica peso..."
             class="border rounded px-3 py-1">
     </label>
+    <label for="largo">
+        Largo
+        <input type="text" wire:model="largo" name="largo" id="largo" placeholder="Indica largo..."
+            class="border rounded px-3 py-1">
+    </label>
+    <label for="ancho">
+        Ancho
+        <input type="text" wire:model="ancho" name="ancho" id="ancho" placeholder="Indica ancho..."
+            class="border rounded px-3 py-1">
+    </label>
+    <label for="alto">
+        Alto
+        <input type="text" wire:model="alto" name="alto" id="alto" placeholder="Indica largo..."
+            class="border rounded px-3 py-1">
+    </label>
 
-    <div>Peso {{ $peso }}</div>
+    <div>Peso {{ $peso }} - Largo {{ $largo }} - Alto {{ $alto }} - Ancho {{ $ancho }} -
+        Peso Volumetrico: {{ isset($resultados) ? $resultados->first()->pesoVolumetrico : '0' }} Kg - ratio
+        ({{ isset($resultados) ? $resultados->first()->agencia->volumetrico : '0' }} Kg/m3)
+    </div>
 
     @isset($resultados)
-        <ul>
-            @foreach ($resultados as $resultado)
-                <li key="{{ $resultado->id }}">{{ $resultado->id }} - Agencia:
-                    {{ $resultado->agencia->nombre }}
+        @if ($resultados->isEmpty())
+            <b>Sin Resultados</b>
+        @else
+            <div class="border px-3 py-2 rounded border-green-400 m-2">
+                <b>Mejor Tarifa: </b> {{ $resultados->first()->tarifa_total }}€ por
+                {{ $resultados->first()->agencia->nombre }}
+            </div>
+            <ul>
+                @foreach ($resultados as $resultado)
+                    <li key="{{ $resultado->id }}">{{ $resultado->id }} - Agencia:
+                        {{ $resultado->agencia->nombre }}
 
-                    - Zona: {{ $resultado->zona->numero }}
-                    - Provincias:
-                    @foreach ($resultado->zona->provincia as $provincia)
-                        {{ $provincia->nombre }}
-                        @if (!$loop->last)
-                            ,
+                        - Zona: {{ $resultado->zona->numero }}
+                        - Provincias:
+                        @foreach ($resultado->zona->provincia as $provincia)
+                            {{ $provincia->nombre }}
+                            @if (!$loop->last)
+                                ,
+                            @endif
+                        @endforeach
+                        - Peso: {{ $resultado->peso->tramo_peso }} Kg
+                        - Medidas : {{ $resultado->medida->ancho }} x {{ $resultado->medida->largo }} x
+                        {{ $resultado->medida->alto }}
+                        - Tarifa: {{ $resultado->tarifa_total }}
+                        - Tarifa x Peso: {{ $resultado->tarifa_por_kg }}
+                        - Ratio Volumetrico: {{ $resultado->ratioVolumetrico }}
+                        - Peso Volumetrico: {{ $resultado->pesoVolumetrico }}
+                        @if ($resultado->tarifa_por_kg != 0)
+                            - Tarifa volumetrica: {{ $resultado->pesoVolumetrico * $resultado->tarifa_por_kg }}
                         @endif
-                    @endforeach
-                    - Peso: {{ $resultado->peso->tramo_peso }} Kg
-                    - Tarifa: {{ $resultado->tarifa_total }}
-                    - Tarifa x Peso: {{ $resultado->tarifa_por_kg }}
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <b>Sin Resultados</b>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
     @endisset
 </div>
