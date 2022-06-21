@@ -15,7 +15,7 @@ class AgenciaResource extends Resource
 {
     protected static ?string $model = Agencia::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-cube';
 
     public static function form(Form $form): Form
     {

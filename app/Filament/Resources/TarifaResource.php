@@ -14,6 +14,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\TarifaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,7 +24,7 @@ class TarifaResource extends Resource
 {
     protected static ?string $model = Tarifa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-cash';
 
     public static function form(Form $form): Form
     {
@@ -115,13 +116,14 @@ class TarifaResource extends Resource
                 Tables\Columns\TextColumn::make('id')->sortable()->label('id'),
                 Tables\Columns\TextColumn::make('agencia.nombre')->sortable()->label('Agencia'),
                 Tables\Columns\TextColumn::make('zona.numero')->sortable()->label('Nº Zona'),
+                Tables\Columns\TextColumn::make('peso.tramo_peso')->label('Peso hasta')->sortable(),
                 Tables\Columns\TextColumn::make('medida.nombremedida')->label('Medidas'),
                 Tables\Columns\TextColumn::make('tarifa_total')->sortable(),
                 Tables\Columns\TextColumn::make('tarifa_total')->sortable(),
                 Tables\Columns\TextColumn::make('tarifa_por_kg')->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('agencia')->relationship('agencia', 'nombre')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

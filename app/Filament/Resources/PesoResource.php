@@ -18,7 +18,7 @@ class PesoResource extends Resource
 {
     protected static ?string $model = Peso::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-scale';
 
     public static function form(Form $form): Form
     {
@@ -40,7 +40,7 @@ class PesoResource extends Resource
                 //
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('agencia')->relationship('agencia', 'nombre')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

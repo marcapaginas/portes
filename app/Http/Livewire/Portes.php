@@ -40,7 +40,7 @@ class Portes extends Component
             if ($this->resultados) {
                 foreach ($this->resultados as $resultado) {
                     $resultado->ratioVolumetrico = $resultado->agencia->volumetrico;
-                    $resultado->pesoVolumetrico = (($this->largo * $this->ancho * $this->alto) * $resultado->ratioVolumetrico) / 100000;
+                    $resultado->pesoVolumetrico = (($this->largo * $this->ancho * $this->alto) * $resultado->ratioVolumetrico) / 1000000;
                 }
             }
         }

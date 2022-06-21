@@ -17,7 +17,7 @@ class ProvinciaResource extends Resource
 {
     protected static ?string $model = Provincia::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-map';
 
     public static function form(Form $form): Form
     {

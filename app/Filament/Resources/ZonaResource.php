@@ -20,7 +20,7 @@ class ZonaResource extends Resource
 {
     protected static ?string $model = Zona::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-globe';
 
     public static function form(Form $form): Form
     {
@@ -46,7 +46,7 @@ class ZonaResource extends Resource
                 //
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('agencia')->relationship('agencia', 'nombre')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

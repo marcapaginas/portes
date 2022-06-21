@@ -19,7 +19,7 @@ class MedidaResource extends Resource
 {
     protected static ?string $model = Medida::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-chart-square-bar';
 
     public static function form(Form $form): Form
     {
@@ -49,7 +49,7 @@ class MedidaResource extends Resource
                 //
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('agencia')->relationship('agencia', 'nombre')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
