@@ -16,9 +16,9 @@ class CreateMedidasTable extends Migration
     {
         Schema::create('medidas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('Ancho')->default(0);
-            $table->decimal('Largo')->default(0);
-            $table->decimal('Alto')->default(0);
+            $table->unsignedBigInteger('ancho')->default(0);
+            $table->unsignedBigInteger('largo')->default(0);
+            $table->unsignedBigInteger('alto')->default(0);
             $table->foreignId('agencia_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -26,7 +26,6 @@ class CreateMedidasTable extends Migration
             $table->timestamps();
         });
     }
-
 
     public function agencia()
     {

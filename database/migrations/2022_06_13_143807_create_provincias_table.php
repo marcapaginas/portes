@@ -17,16 +17,16 @@ class CreateProvinciasTable extends Migration
         Schema::create('provincias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('siglas');
-            $table->string('codigo_postal');
-            $table->string('codigo_telefonico');
+            // $table->string('siglas');
+            // $table->string('codigo_postal');
+            // $table->string('codigo_telefonico');
             $table->timestamps();
         });
     }
 
     public function zona()
     {
-        return $this->belongsTo(Zona::class);
+        return $this->belongsToMany(Zona::class);
     }
 
     /**

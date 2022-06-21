@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Agencia;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Medida extends Model
 {
@@ -15,9 +16,24 @@ class Medida extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'Ancho',
-        'Largo',
-        'Alto',
+        'ancho',
+        'largo',
+        'alto',
         'agencia_id'
     ];
+
+    public function agencia()
+    {
+        return $this->belongsTo(Agencia::class);
+    }
+
+    public function tarifa()
+    {
+        return $this->belongsTo(Tarifa::class);
+    }
+
+    public function getNombreMedidaAttribute()
+    {
+        return "{$this->ancho} x {$this->largo} x {$this->alto} ";
+    }
 }

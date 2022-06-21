@@ -20,6 +20,7 @@ class CreateAgenciasTable extends Migration
         Schema::create('agencias', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
+            $table->unsignedBigInteger('volumetrico');
             $table->timestamps();
         });
     }

@@ -21,10 +21,6 @@ class CreateZonasTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('provincia_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->unsignedBigInteger('numero');
             $table->timestamps();
 
@@ -39,7 +35,7 @@ class CreateZonasTable extends Migration
 
     public function provincia()
     {
-        return $this->hasMany(Provincia::class);
+        return $this->belongsToMany(Provincia::class);
     }
 
 

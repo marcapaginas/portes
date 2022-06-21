@@ -21,7 +21,8 @@ class AgenciaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nombre')->required(),
+                Forms\Components\TextInput::make('volumetrico')->required(),
             ]);
     }
 
@@ -29,20 +30,22 @@ class AgenciaResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('nombre')->sortable(),
+                Tables\Columns\TextColumn::make('volumetrico')->sortable()
                 //
             ])
             ->filters([
                 //
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [

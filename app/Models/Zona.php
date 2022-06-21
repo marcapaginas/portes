@@ -19,4 +19,25 @@ class Zona extends Model
         'provincia_id',
         'numero'
     ];
+
+    public function agencia()
+    {
+        return $this->belongsTo(Agencia::class);
+    }
+
+    public function tarifa()
+    {
+        return $this->belongsTo(Tarifa::class);
+    }
+
+    public function provincia()
+    {
+        return $this->belongsToMany(Provincia::class);
+    }
+
+    public function getTodasLasZonasAttribute()
+    {
+        $todaslaszonas = Provincia::where('id', 'provincia_id')->get()->toArray();
+        return implode(', ', $todaslaszonas);
+    }
 }

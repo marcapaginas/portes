@@ -15,6 +15,24 @@ class Agencia extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre'
+        'nombre',
+        'volumetrico'
     ];
+
+    public function medida()
+    {
+        return $this->hasMany(Medida::class);
+    }
+    public function peso()
+    {
+        return $this->hasMany(Peso::class);
+    }
+    public function zona()
+    {
+        return $this->hasMany(Zona::class);
+    }
+    public function tarifa()
+    {
+        return $this->hasMany(Tarifa::class);
+    }
 }

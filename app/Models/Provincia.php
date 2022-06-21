@@ -15,8 +15,13 @@ class Provincia extends Model
      */
     protected $fillable = [
         'nombre',
-        'siglas',
-        'codigo_postal',
-        'codigo_telefonico'
+        // 'siglas',
+        // 'codigo_postal',
+        // 'codigo_telefonico'
     ];
+
+    public function zona()
+    {
+        return $this->belongsToMany(Zona::class);
+    }
 }

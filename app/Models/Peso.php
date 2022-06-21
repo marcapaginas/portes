@@ -18,4 +18,14 @@ class Peso extends Model
         'agencia_id',
         'tramo_peso'
     ];
+
+    public function agencia()
+    {
+        return $this->belongsTo(Agencia::class);
+    }
+
+    public function tarifa()
+    {
+        return $this->belongsTo(Tarifa::class);
+    }
 }

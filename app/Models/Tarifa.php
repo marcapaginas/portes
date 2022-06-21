@@ -15,10 +15,34 @@ class Tarifa extends Model
      */
     protected $fillable = [
         'agencia_id',
+        //'agencia',
         'zona_id',
+        //'zona',
         'medida_id',
+        //'medida',
         'peso_id',
+        //'peso',
         'tarifa_total',
         'tarifa_por_kg'
     ];
+
+    public function agencia()
+    {
+        return $this->belongsTo(Agencia::class);
+    }
+
+    public function zona()
+    {
+        return $this->belongsTo(Zona::class);
+    }
+
+    public function medida()
+    {
+        return $this->belongsTo(Medida::class);
+    }
+
+    public function peso()
+    {
+        return $this->belongsTo(Peso::class);
+    }
 }
