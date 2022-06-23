@@ -41,7 +41,7 @@ class MedidaResource extends Resource
     {
         return $table
             ->columns([
-                //Tables\Columns\TextColumn::make('agencia_id')->sortable(),
+                Tables\Columns\TextColumn::make('id')->sortable(),
                 Tables\Columns\TextColumn::make('agencia.nombre')->sortable(),
                 Tables\Columns\TextColumn::make('ancho')->sortable(),
                 Tables\Columns\TextColumn::make('largo')->sortable(),

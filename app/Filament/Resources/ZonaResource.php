@@ -40,6 +40,7 @@ class ZonaResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')->label('id')->sortable(),
                 Tables\Columns\TextColumn::make('agencia.nombre')->label('Agencia')->sortable(),
                 Tables\Columns\TextColumn::make('numero')->label('Zona')->sortable(),
                 Tables\Columns\TagsColumn::make('provincia.nombre')->separator(',')->label('Provincias')

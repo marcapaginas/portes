@@ -13,22 +13,18 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 </head>
 
-<body class="p-3">
-    <div class="p-4 font-bold text-center text-white bg-blue-500">
-        Portes
+<body class="h-screen bg-gradient-to-br from-green-500 to-gray-700">
+
+    <div
+        class="w-2/3 fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+    bg-white drop-shadow-xl rounded-xl p-10 ">
+        <livewire:portes />
     </div>
-    {{-- dd($datos->first()->agencia->nombre) --}}
+
+
+
+
     {{-- dd(get_defined_vars()['__data']) --}}
-    <h2 class="text-xl font-bold underline">Tarifas</h2>
-    {{-- @isset($provincias)
-        @foreach ($provincias as $provincia)
-            hola
-            {{ $provincia['nombre'] }}
-        @endforeach
-    @else
-        NO
-    @endisset --}}
-    <livewire:portes />
     @livewireScripts
 </body>
 
