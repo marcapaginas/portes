@@ -8,21 +8,15 @@
     <title>Portes</title>
     @livewireStyles
     <script src="https://cdn.tailwindcss.com"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 </head>
 
-<body class="h-screen bg-gradient-to-br from-green-500 to-gray-700">
+<body class="h-screen bg-gradient-to-br from-gray-500 to-gray-700">
 
     <div
-        class="w-2/3 fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
-    bg-white drop-shadow-xl rounded-xl p-10 ">
+        class="w-2/3 max-w-xl fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+    bg-white drop-shadow-xl rounded-xl p-10 transition-all">
         <livewire:portes />
     </div>
-
-
-
 
     {{-- dd(get_defined_vars()['__data']) --}}
     @livewireScripts
